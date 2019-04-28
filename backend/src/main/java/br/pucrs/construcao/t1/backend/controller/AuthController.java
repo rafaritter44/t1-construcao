@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.pucrs.construcao.t1.backend.dto.User;
-import br.pucrs.construcao.t1.backend.exception.FileAccessException;
 import br.pucrs.construcao.t1.backend.exception.InvalidPasswordException;
 import br.pucrs.construcao.t1.backend.exception.UserAlreadyExistsException;
-import br.pucrs.construcao.t1.backend.exception.XmlConversionException;
 import br.pucrs.construcao.t1.backend.service.AuthService;
 import reactor.core.publisher.Mono;
 
@@ -31,9 +29,7 @@ public class AuthController {
 		return Mono.just(user)
 				.map(authService::register)
 				.doOnError(InvalidPasswordException.class, this::handle)
-				.doOnError(UserAlreadyExistsException.class, this::handle)
-				.doOnError(FileAccessException.class, this::handle)
-				.doOnError(XmlConversionException.class, this::handle);
+				.doOnError(UserAlreadyExistsException.class, this::handle);
 	}
 	
 	private void handle(Throwable e) {
@@ -43,9 +39,7 @@ public class AuthController {
 	@GetMapping("/login")
 	public Mono<Boolean> login(@RequestBody User user) {
 		return Mono.just(user)
-				.map(authService::login)
-				.doOnError(FileAccessException.class, this::handle)
-				.doOnError(XmlConversionException.class, this::handle);
+				.map(authService::login);
 	}
 	
 }

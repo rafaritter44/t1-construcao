@@ -30,7 +30,7 @@ public class FileService {
 		new File(path).mkdir();
 	}
 	
-	public void createXmlFile(String fileName, Object content) throws FileAccessException, XmlConversionException {
+	public void writeToXmlFile(String fileName, Object content) throws FileAccessException, XmlConversionException {
 		try {
 			xmlMapper.writeValue(new File(fileName), content);
 		} catch (JsonProcessingException e) {

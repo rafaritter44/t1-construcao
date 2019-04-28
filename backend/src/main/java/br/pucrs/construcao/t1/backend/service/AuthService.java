@@ -1,13 +1,16 @@
 package br.pucrs.construcao.t1.backend.service;
 
+import java.util.Collections;
+
 import org.springframework.stereotype.Service;
 
-import br.pucrs.construcao.t1.backend.dto.PasswordWrapper;
 import br.pucrs.construcao.t1.backend.dto.User;
 import br.pucrs.construcao.t1.backend.exception.FileAccessException;
 import br.pucrs.construcao.t1.backend.exception.InvalidPasswordException;
 import br.pucrs.construcao.t1.backend.exception.UserAlreadyExistsException;
 import br.pucrs.construcao.t1.backend.exception.XmlConversionException;
+import br.pucrs.construcao.t1.backend.wrapper.BooksWrapper;
+import br.pucrs.construcao.t1.backend.wrapper.PasswordWrapper;
 
 @Service
 public class AuthService {
@@ -21,7 +24,7 @@ public class AuthService {
 		this.fileService = fileService;
 	}
 	
-	public User register(User user) throws UserAlreadyExistsException, FileAccessException, XmlConversionException {
+	public User register(User user) throws InvalidPasswordException, UserAlreadyExistsException, FileAccessException, XmlConversionException {
 		if (!validPassword(user.getPassword())) {
 			throw new InvalidPasswordException("Password must have length between %d and %d.", PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH);
 		}
@@ -29,7 +32,8 @@ public class AuthService {
 			throw new UserAlreadyExistsException("There is already an user registered with that name.");
 		}
 		registerUserName(user.getName());
-		registerPassword(passwordFile(user.getName()), user.getPassword());
+		registerPassword(passwordFileOf(user.getName()), user.getPassword());
+		registerEmptyListOfBooksFor(user.getName());
 		return user;
 	}
 	
@@ -45,20 +49,28 @@ public class AuthService {
 		fileService.createDirectory(userName);
 	}
 	
-	private String passwordFile(String userName) {
-		return userName + "/password.xml";
+	private String passwordFileOf(String userName) {
+		return userName.concat("/password.xml");
 	}
 	
 	private void registerPassword(String passwordFile, String password) throws FileAccessException, XmlConversionException {
-		fileService.createXmlFile(passwordFile, wrap(password));
+		fileService.writeToXmlFile(passwordFile, wrap(password));
 	}
 	
 	private PasswordWrapper wrap(String password) {
 		return new PasswordWrapper(password);
 	}
 	
+	private void registerEmptyListOfBooksFor(String userName) {
+		fileService.writeToXmlFile(booksFileOf(userName), new BooksWrapper(Collections.emptyList()));
+	}
+	
+	private String booksFileOf(String userName) {
+		return userName.concat("/books.xml");
+	}
+	
 	public boolean login(User user) throws FileAccessException, XmlConversionException {
-		return isRegistered(user.getName()) && correctPassword(passwordFile(user.getName()), user.getPassword());
+		return isRegistered(user.getName()) && correctPassword(passwordFileOf(user.getName()), user.getPassword());
 	}
 	
 	private boolean correctPassword(String passwordFile, String informedPassword) throws FileAccessException, XmlConversionException {

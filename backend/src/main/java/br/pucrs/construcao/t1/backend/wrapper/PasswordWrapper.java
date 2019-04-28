@@ -1,4 +1,4 @@
-package br.pucrs.construcao.t1.backend.dto;
+package br.pucrs.construcao.t1.backend.wrapper;
 
 public class PasswordWrapper {
 	
