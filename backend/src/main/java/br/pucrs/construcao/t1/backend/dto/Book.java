@@ -32,4 +32,8 @@ public class Book {
 		return readPages;
 	}
 	
+	public void setReadPages(int readPages) {
+		this.readPages = readPages;
+	}
+	
 }

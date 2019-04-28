@@ -1,6 +1,8 @@
 package br.pucrs.construcao.t1.backend.service;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -51,9 +53,29 @@ public class BookService {
 	public Book byTitleAndAuthor(String userName, String title, String author)
 			throws BookNotFoundException, FileAccessException, XmlConversionException {
 		return booksOf(userName).stream()
-				.filter(book -> book.getTitle().equals(title) && book.getAuthor().equals(author))
+				.filter(sameTitleAndAuthor(title, author))
 				.findAny()
 				.orElseThrow(() -> new BookNotFoundException("No such book: %s by %s", title, author));
+	}
+	
+	private Predicate<Book> sameTitleAndAuthor(String title, String author) {
+		return book -> book.getTitle().equals(title) && book.getAuthor().equals(author);
+	}
+	
+	public Book update(String userName, String title, String author, int readPages)
+			throws BookNotFoundException, FileAccessException, XmlConversionException {
+		List<Book> updated = booksOf(userName).stream()
+				.map(book -> updateIfSameTitleAndAuthor(book, title, author, readPages))
+				.collect(Collectors.toList());
+		saveBooks(updated, userName);
+		return byTitleAndAuthor(userName, title, author);
+	}
+	
+	private Book updateIfSameTitleAndAuthor(Book book, String title, String author, int readPages) {
+		if (sameTitleAndAuthor(title, author).test(book)) {
+			book.setReadPages(readPages);
 		}
+		return book;
+	}
 	
 }
