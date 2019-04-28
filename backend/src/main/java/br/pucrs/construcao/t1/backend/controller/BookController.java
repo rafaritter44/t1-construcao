@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.pucrs.construcao.t1.backend.dto.Book;
 import br.pucrs.construcao.t1.backend.exception.BookLimitReachedException;
+import br.pucrs.construcao.t1.backend.exception.BookNotFoundException;
 import br.pucrs.construcao.t1.backend.service.BookService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -39,6 +40,15 @@ public class BookController {
 	public Flux<Book> booksOf(@PathVariable("userName") String userName) {
 		return Mono.just(userName)
 				.flatMapIterable(bookService::booksOf);
+	}
+	
+	@GetMapping("/user/{userName}/author/{author}/title/{title}")
+	public Mono<Book> byTitleAndAuthor(
+			@PathVariable("userName") String userName,
+			@PathVariable("title") String title,
+			@PathVariable("author") String author) {
+		return Mono.fromCallable(() -> bookService.byTitleAndAuthor(userName, title, author))
+				.doOnError(BookNotFoundException.class, this::handle);
 	}
 	
 }

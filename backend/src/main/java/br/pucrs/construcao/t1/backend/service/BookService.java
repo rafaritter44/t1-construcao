@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import br.pucrs.construcao.t1.backend.dto.Book;
 import br.pucrs.construcao.t1.backend.exception.BookLimitReachedException;
+import br.pucrs.construcao.t1.backend.exception.BookNotFoundException;
 import br.pucrs.construcao.t1.backend.exception.FileAccessException;
 import br.pucrs.construcao.t1.backend.exception.XmlConversionException;
 import br.pucrs.construcao.t1.backend.wrapper.BooksWrapper;
@@ -46,5 +47,13 @@ public class BookService {
 	private BooksWrapper wrap(List<Book> books) {
 		return new BooksWrapper(books);
 	}
+	
+	public Book byTitleAndAuthor(String userName, String title, String author)
+			throws BookNotFoundException, FileAccessException, XmlConversionException {
+		return booksOf(userName).stream()
+				.filter(book -> book.getTitle().equals(title) && book.getAuthor().equals(author))
+				.findAny()
+				.orElseThrow(() -> new BookNotFoundException("No such book: %s by %s", title, author));
+		}
 	
 }
