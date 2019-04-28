@@ -1,6 +1,7 @@
 package br.pucrs.construcao.t1.backend.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,6 +56,15 @@ public class BookController {
 	@PatchMapping("/user/{userName}")
 	public Mono<Book> update(@PathVariable("userName") String userName, @RequestBody Book book) {
 		return Mono.fromCallable(() -> bookService.update(userName, book.getTitle(), book.getAuthor(), book.getReadPages()))
+				.doOnError(BookNotFoundException.class, this::handle);
+	}
+	
+	@DeleteMapping("/user/{userName}/author/{author}/title/{title}")
+	public Mono<Book> delete(
+			@PathVariable("userName") String userName,
+			@PathVariable("title") String title,
+			@PathVariable("author") String author) {
+		return Mono.fromCallable(() -> bookService.delete(userName, title, author))
 				.doOnError(BookNotFoundException.class, this::handle);
 	}
 	

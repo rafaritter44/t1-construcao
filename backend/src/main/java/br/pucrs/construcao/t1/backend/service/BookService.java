@@ -52,7 +52,11 @@ public class BookService {
 	
 	public Book byTitleAndAuthor(String userName, String title, String author)
 			throws BookNotFoundException, FileAccessException, XmlConversionException {
-		return booksOf(userName).stream()
+		return byTitleAndAuthor(booksOf(userName), title, author);
+	}
+	
+	private Book byTitleAndAuthor(List<Book> books, String title, String author) throws BookNotFoundException {
+		return books.stream()
 				.filter(sameTitleAndAuthor(title, author))
 				.findAny()
 				.orElseThrow(() -> new BookNotFoundException("No such book: %s by %s", title, author));
@@ -75,6 +79,15 @@ public class BookService {
 		if (sameTitleAndAuthor(title, author).test(book)) {
 			book.setReadPages(readPages);
 		}
+		return book;
+	}
+	
+	public Book delete(String userName, String title, String author)
+			throws BookNotFoundException, FileAccessException, XmlConversionException {
+		List<Book> books = booksOf(userName);
+		Book book = byTitleAndAuthor(books, title, author);
+		books.remove(book);
+		saveBooks(books, userName);
 		return book;
 	}
 	
