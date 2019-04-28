@@ -31,7 +31,7 @@ public class BookService {
 		return book;
 	}
 	
-	private List<Book> booksOf(String userName) throws FileAccessException, XmlConversionException {
+	public List<Book> booksOf(String userName) throws FileAccessException, XmlConversionException {
 		return fileService.readXmlFile(booksFileOf(userName), BooksWrapper.class).getBooks();
 	}
 	
@@ -40,7 +40,11 @@ public class BookService {
 	}
 	
 	private void saveBooks(List<Book> books, String userName) throws FileAccessException, XmlConversionException {
-		fileService.writeToXmlFile(booksFileOf(userName), new BooksWrapper(books));
+		fileService.writeToXmlFile(booksFileOf(userName), wrap(books));
+	}
+	
+	private BooksWrapper wrap(List<Book> books) {
+		return new BooksWrapper(books);
 	}
 	
 }
