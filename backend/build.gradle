@@ -16,6 +16,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'com.fasterxml:jackson-xml-databind:0.6.2'
+	implementation 'io.github.benas:random-beans:3.7.0'
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 }
