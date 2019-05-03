@@ -35,5 +35,14 @@ public class Book {
 	public void setReadPages(int readPages) {
 		this.readPages = readPages;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Book{" +
+				"title='" + title + '\'' +
+				", author='" + author + '\'' +
+				", totalPages=" + totalPages +
+				", readPages=" + readPages +
+				'}';
+	}
 }

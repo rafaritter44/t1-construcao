@@ -50,12 +50,12 @@ public class BookService {
 		return new BooksWrapper(books);
 	}
 	
-	public Book byTitleAndAuthor(String userName, String title, String author)
+	public Book findByTitleAndAuthor(String userName, String title, String author)
 			throws BookNotFoundException, FileAccessException, XmlConversionException {
-		return byTitleAndAuthor(booksOf(userName), title, author);
+		return findByTitleAndAuthor(booksOf(userName), title, author);
 	}
 	
-	private Book byTitleAndAuthor(List<Book> books, String title, String author) throws BookNotFoundException {
+	private Book findByTitleAndAuthor(List<Book> books, String title, String author) throws BookNotFoundException {
 		return books.stream()
 				.filter(sameTitleAndAuthor(title, author))
 				.findAny()
@@ -72,7 +72,7 @@ public class BookService {
 				.map(book -> updateIfSameTitleAndAuthor(book, title, author, readPages))
 				.collect(Collectors.toList());
 		saveBooks(updated, userName);
-		return byTitleAndAuthor(userName, title, author);
+		return findByTitleAndAuthor(userName, title, author);
 	}
 	
 	private Book updateIfSameTitleAndAuthor(Book book, String title, String author, int readPages) {
@@ -85,7 +85,7 @@ public class BookService {
 	public Book delete(String userName, String title, String author)
 			throws BookNotFoundException, FileAccessException, XmlConversionException {
 		List<Book> books = booksOf(userName);
-		Book book = byTitleAndAuthor(books, title, author);
+		Book book = findByTitleAndAuthor(books, title, author);
 		books.remove(book);
 		saveBooks(books, userName);
 		return book;
