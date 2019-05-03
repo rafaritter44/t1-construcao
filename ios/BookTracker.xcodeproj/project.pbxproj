@@ -16,6 +16,10 @@
 		8D6DEDC02276147F00FA801E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D6DEDBF2276147F00FA801E /* Assets.xcassets */; };
 		8D6DEDC32276147F00FA801E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D6DEDC12276147F00FA801E /* LaunchScreen.storyboard */; };
 		8D6DEDCE2276147F00FA801E /* BookTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6DEDCD2276147F00FA801E /* BookTrackerTests.swift */; };
+		8DA38C25227CAAF300A41FC7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA38C24227CAAF300A41FC7 /* SignUpViewController.swift */; };
+		8DA38C29227CB4F700A41FC7 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA38C28227CB4F700A41FC7 /* BookDetailViewController.swift */; };
+		8DA38C2B227CB51900A41FC7 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA38C2A227CB51900A41FC7 /* BookService.swift */; };
+		8DA38C2D227CC00D00A41FC7 /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA38C2C227CC00D00A41FC7 /* BooksTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		8D6DEDC92276147F00FA801E /* BookTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6DEDCD2276147F00FA801E /* BookTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTrackerTests.swift; sourceTree = "<group>"; };
 		8D6DEDCF2276147F00FA801E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DA38C24227CAAF300A41FC7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8DA38C28227CB4F700A41FC7 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		8DA38C2A227CB51900A41FC7 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		8DA38C2C227CC00D00A41FC7 /* BooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +93,15 @@
 			children = (
 				8D6DEDB82276147E00FA801E /* AppDelegate.swift */,
 				8D6DEDBA2276147E00FA801E /* LoginViewController.swift */,
+				8DA38C24227CAAF300A41FC7 /* SignUpViewController.swift */,
+				8DA38C28227CB4F700A41FC7 /* BookDetailViewController.swift */,
+				8DA38C2C227CC00D00A41FC7 /* BooksTableViewController.swift */,
 				8D6DEDBC2276147E00FA801E /* Main.storyboard */,
 				8D6DEDBF2276147F00FA801E /* Assets.xcassets */,
 				8D6DEDC12276147F00FA801E /* LaunchScreen.storyboard */,
 				8D6DEDC42276147F00FA801E /* Info.plist */,
 				8D00D625227C877600A7AFA8 /* AuthService.swift */,
+				8DA38C2A227CB51900A41FC7 /* BookService.swift */,
 				8D00D627227C87F500A7AFA8 /* User.swift */,
 				8D00D629227C8A4900A7AFA8 /* BookTrackerURL.swift */,
 			);
@@ -206,11 +218,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA38C25227CAAF300A41FC7 /* SignUpViewController.swift in Sources */,
 				8D00D628227C87F500A7AFA8 /* User.swift in Sources */,
 				8D00D626227C877600A7AFA8 /* AuthService.swift in Sources */,
 				8D6DEDBB2276147E00FA801E /* LoginViewController.swift in Sources */,
 				8D00D62A227C8A4900A7AFA8 /* BookTrackerURL.swift in Sources */,
+				8DA38C2D227CC00D00A41FC7 /* BooksTableViewController.swift in Sources */,
+				8DA38C2B227CB51900A41FC7 /* BookService.swift in Sources */,
 				8D6DEDB92276147E00FA801E /* AppDelegate.swift in Sources */,
+				8DA38C29227CB4F700A41FC7 /* BookDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
