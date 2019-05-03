@@ -6,4 +6,6 @@ WORKDIR opt/app
 
 RUN ./gradlew clean build
 
-ENTRYPOINT["java", "-jar", "backend-0.0.1-SNAPSHOT.jar"]
+WORKDIR /opt/app/build/libs
+
+ENTRYPOINT ["java", "-jar", "backend-0.0.1-SNAPSHOT.jar"]
