@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D00D626227C877600A7AFA8 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00D625227C877600A7AFA8 /* AuthService.swift */; };
+		8D00D628227C87F500A7AFA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00D627227C87F500A7AFA8 /* User.swift */; };
+		8D00D62A227C8A4900A7AFA8 /* BookTrackerURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00D629227C8A4900A7AFA8 /* BookTrackerURL.swift */; };
 		8D6DEDB92276147E00FA801E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6DEDB82276147E00FA801E /* AppDelegate.swift */; };
 		8D6DEDBB2276147E00FA801E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6DEDBA2276147E00FA801E /* LoginViewController.swift */; };
 		8D6DEDBE2276147E00FA801E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D6DEDBC2276147E00FA801E /* Main.storyboard */; };
@@ -26,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D00D625227C877600A7AFA8 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8D00D627227C87F500A7AFA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8D00D629227C8A4900A7AFA8 /* BookTrackerURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTrackerURL.swift; sourceTree = "<group>"; };
 		8D6DEDB52276147E00FA801E /* BookTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6DEDB82276147E00FA801E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D6DEDBA2276147E00FA801E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +89,9 @@
 				8D6DEDBF2276147F00FA801E /* Assets.xcassets */,
 				8D6DEDC12276147F00FA801E /* LaunchScreen.storyboard */,
 				8D6DEDC42276147F00FA801E /* Info.plist */,
+				8D00D625227C877600A7AFA8 /* AuthService.swift */,
+				8D00D627227C87F500A7AFA8 /* User.swift */,
+				8D00D629227C8A4900A7AFA8 /* BookTrackerURL.swift */,
 			);
 			path = BookTracker;
 			sourceTree = "<group>";
@@ -197,7 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D00D628227C87F500A7AFA8 /* User.swift in Sources */,
+				8D00D626227C877600A7AFA8 /* AuthService.swift in Sources */,
 				8D6DEDBB2276147E00FA801E /* LoginViewController.swift in Sources */,
+				8D00D62A227C8A4900A7AFA8 /* BookTrackerURL.swift in Sources */,
 				8D6DEDB92276147E00FA801E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
