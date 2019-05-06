@@ -183,7 +183,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Livros" id="YXw-WI-zej">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Tg2-Fq-g7h"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Tg2-Fq-g7h">
+                            <connections>
+                                <action selector="closeButtonTouched:" destination="Fqq-M8-zBG" id="V2b-dX-5Hj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YgC-vv-LeL">
                             <connections>
                                 <segue destination="edO-s1-VZC" kind="show" identifier="newBook" id="9Gj-x8-ckE"/>
@@ -210,13 +214,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paginas Lidas: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCD-kI-N6P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paginas Lidas: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCD-kI-N6P">
                                 <rect key="frame" x="10" y="205" width="261" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="PQb-la-kfj">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="PQb-la-kfj">
                                 <rect key="frame" x="271" y="205" width="94" height="29"/>
                                 <connections>
                                     <action selector="readPagesChanged:" destination="edO-s1-VZC" eventType="valueChanged" id="6SY-0k-HFg"/>
@@ -228,13 +232,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total de paginas: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sng-M0-E5B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total de paginas: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sng-M0-E5B">
                                 <rect key="frame" x="10" y="174" width="261" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="uya-J0-6Q6">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="uya-J0-6Q6">
                                 <rect key="frame" x="271" y="169" width="94" height="29"/>
                                 <connections>
                                     <action selector="totalOfPageChanged:" destination="edO-s1-VZC" eventType="valueChanged" id="f3v-KV-7zO"/>
@@ -272,10 +276,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="autorTextField" destination="bw5-i8-mae" id="7et-B7-B1P"/>
-                        <outlet property="nomeTextField" destination="YzR-H8-XXd" id="QVp-Z3-hDD"/>
+                        <outlet property="authorTextField" destination="bw5-i8-mae" id="7et-B7-B1P"/>
                         <outlet property="readPagesLabel" destination="xCD-kI-N6P" id="GJB-iw-8E3"/>
+                        <outlet property="titleTextField" destination="YzR-H8-XXd" id="QVp-Z3-hDD"/>
                         <outlet property="totalOfPagesLabel" destination="sng-M0-E5B" id="s4W-OQ-N53"/>
+                        <outlet property="totalOfPagesStepper" destination="uya-J0-6Q6" id="lLB-eh-xrC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgc-5y-vhS" userLabel="First Responder" sceneMemberID="firstResponder"/>

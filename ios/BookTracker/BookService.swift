@@ -10,7 +10,6 @@ final class BooksService {
     }
     
     func register(book: Book,
-                  username: String,
                   completion: @escaping (Result<Void, Error>) -> Void) {
         
         let url = BookTrackerURL.registerBook(username: AuthService.currentName ?? "")
@@ -33,6 +32,25 @@ final class BooksService {
             }.resume()
     }
     
+    func update(updatedBook: Book, index: Int,completion: @escaping (Result<Void, Error>) -> Void) {
+        let url = BookTrackerURL.registerBook(username: AuthService.currentName ?? "")
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "PATCH"
+        urlRequest.httpBody =  try? JSONEncoder().encode(updatedBook)
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        session.dataTask(with: urlRequest) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let data = data else {
+                    return
+                }
+                
+                self.books[index] = updatedBook
+                completion(.success(()))
+            }
+            }.resume()
+    }
+    
     func getAllBooks(completion: @escaping (Result<Void, Error>) -> Void) {
         let url = BookTrackerURL.getAllBooks(username: AuthService.currentName ?? "")
         let urlRequest = URLRequest(url: url)
@@ -49,20 +67,22 @@ final class BooksService {
             }.resume()
     }
     
-    func delete(book: Book, username: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let url = BookTrackerURL.delete(book: book, username: username)
+    func delete(index: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        let book = books[index]
+        let url = BookTrackerURL.delete(book: book, username: AuthService.currentName ?? "")
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "DELETE"
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             DispatchQueue.main.async {
-
-            guard let data = data else { return }
-            
-            let message = String(decoding: data, as: UTF8.self)
-            completion(.success(message))
-        }
-        }
+                
+                guard let data = data else { return }
+                
+                self.books.remove(at: index)
+                let message = String(decoding: data, as: UTF8.self)
+                completion(.success(message))
+            }
+            }.resume()
     }
 }
 
