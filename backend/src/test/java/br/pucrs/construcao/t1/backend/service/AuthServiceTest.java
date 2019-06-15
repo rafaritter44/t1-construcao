@@ -1,4 +1,4 @@
-package br.pucrs.construcao.t1.backend.unit.service;
+package br.pucrs.construcao.t1.backend.service;
 
 import br.pucrs.construcao.t1.backend.dto.User;
 import br.pucrs.construcao.t1.backend.exception.InvalidPasswordException;

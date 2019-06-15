@@ -1,4 +1,4 @@
-package br.pucrs.construcao.t1.backend.unit.service;
+package br.pucrs.construcao.t1.backend.service;
 
 import br.pucrs.construcao.t1.backend.dto.Book;
 import br.pucrs.construcao.t1.backend.exception.BookLimitReachedException;
