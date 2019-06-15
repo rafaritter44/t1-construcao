@@ -1,11 +1,6 @@
 package br.pucrs.construcao.t1.backend.controller;
 
-import br.pucrs.construcao.t1.backend.dto.Book;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +11,9 @@ import br.pucrs.construcao.t1.backend.dto.User;
 import br.pucrs.construcao.t1.backend.exception.InvalidPasswordException;
 import br.pucrs.construcao.t1.backend.exception.UserAlreadyExistsException;
 import br.pucrs.construcao.t1.backend.service.AuthService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import reactor.core.publisher.Mono;
 
 @RestController
