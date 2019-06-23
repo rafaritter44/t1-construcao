@@ -41,7 +41,8 @@ final class BooksService {
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             DispatchQueue.main.async {
-                guard let data = data else {
+                guard data != nil else {
+                    completion(.failure(error!))
                     return
                 }
                 

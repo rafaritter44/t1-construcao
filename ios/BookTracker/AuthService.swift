@@ -23,9 +23,12 @@ final class AuthService {
                     completion(.failure(URLError(.badServerResponse)))
                     return
                 }
-                print(String(decoding: data, as: UTF8.self))
-                let user = try! (JSONDecoder().decode(User.self, from: data))
-                completion(.success(user))
+                do {
+                    let user = try (JSONDecoder().decode(User.self, from: data))
+                    completion(.success(user))
+                } catch {
+                    completion(.failure(error))
+                }
             }
         }.resume()
     }
