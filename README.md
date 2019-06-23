@@ -64,5 +64,15 @@ gradlew clean build
 java -jar build/libs/minha-aplicacao-0.0.1-SNAPSHOT.jar 
 ```
 
+## Passos para executar a aplicação iOS
+
+- Abra o diretório `ios/`
+- Usando o terminal execute o comando abaixo(esse comando abre o Xcode).
+```sh
+xed .
+```
+- Após isso deve executar o projeto usando o comando `cmd` + `r` ou selecionando o botão de play.
+
 ## Requisitos
-- Java 8 (openJDK)
+- Java 8 (OpenJDK)
+- Xcode 10.2
