@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="mongo-impls.main" target="1.8" />
+      <module name="mongo-impls.test" target="1.8" />
+      <module name="software-product-line.main" target="1.8" />
+      <module name="software-product-line.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
