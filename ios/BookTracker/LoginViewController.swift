@@ -27,6 +27,8 @@ final class LoginViewController: UIViewController {
                 if value {
                     AuthService.currentName = user.name
                     self.performSegue(withIdentifier: "showBooks", sender: nil)
+                } else {
+                    self.presentAlert(message: "Login invalido")
                 }
             case .failure(let error):
                 print(error.localizedDescription)

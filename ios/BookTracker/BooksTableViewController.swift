@@ -64,7 +64,7 @@ class BooksTableViewController: UITableViewController {
                 case .success:
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                 case .failure:
-                    print()
+                    self.presentAlert(message: "Erro ao deletar livro")
                 }
             }
         }

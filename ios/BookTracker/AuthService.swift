@@ -1,5 +1,9 @@
 import Foundation
 
+struct ErrorMessage: Error {
+    let message: String?
+}
+
 final class AuthService {
     static let shared = AuthService()
     static var currentName: String?
@@ -9,7 +13,7 @@ final class AuthService {
         self.session = session
     }
     
-    func register(user: User, completion: @escaping (Result<User, Error>) -> Void) {
+    func register(user: User, completion: @escaping (Result<User, ErrorMessage>) -> Void) {
         
         let url = BookTrackerURL.register()
         var urlRequest = URLRequest(url: url)
@@ -20,14 +24,14 @@ final class AuthService {
         session.dataTask(with: urlRequest) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data else {
-                    completion(.failure(URLError(.badServerResponse)))
+                    completion(.failure(ErrorMessage(message: error?.localizedDescription)))
                     return
                 }
                 do {
                     let user = try (JSONDecoder().decode(User.self, from: data))
                     completion(.success(user))
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(ErrorMessage(message: String(data: data, encoding: .utf8))))
                 }
             }
         }.resume()

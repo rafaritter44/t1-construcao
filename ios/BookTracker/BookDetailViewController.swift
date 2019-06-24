@@ -64,7 +64,7 @@ class BookDetailViewController: UIViewController {
             case .success:
                 self.navigationController?.popViewController(animated: true)
             case .failure(let error):
-                print(error)
+                self.presentAlert(message: "Erro para inserir o livro")
             }
         }
             
@@ -74,7 +74,7 @@ class BookDetailViewController: UIViewController {
                 case .success:
                     self.navigationController?.popViewController(animated: true)
                 case .failure(let error):
-                    print(error)
+                    self.presentAlert(message: "Erro para atualizar o livro")
                 }
             }
         }

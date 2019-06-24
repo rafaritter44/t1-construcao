@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
                 AuthService.currentName = user.name
             case .failure(let error):
-                print(error)
+                self.presentAlert(message: error.message)
             }
         }
     }

@@ -1,7 +1,7 @@
 import Foundation
 
 struct BookTrackerURL {
-    static let baseURL = "http://localhost:8080"
+    static let baseURL = "http://172.20.10.5:8080"
     
     static func register() -> URL {
         let url = URL(string: BookTrackerURL.baseURL)!
